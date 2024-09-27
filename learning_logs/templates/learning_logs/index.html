@@ -1,0 +1,86 @@
+{% extends 'learning_logs/base_navbar.html' %}
+{% block content %}
+        <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title"><span id="typing-effect"></span></h1>
+            <p class="hero-subtitle">Organize and summarize all your learning in one place.</p>
+            <a href="{% url 'users:register' %}" class="btn btn-light btn-cta">Get Started</a>
+        </div>
+    </section>
+    <!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="bi bi-journal"></i>
+                    </div>
+                    <h3>Log Your Learning</h3>
+                    <p>Easily track the topics you're learning and summarize key takeaways.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="bi bi-calendar-event"></i>
+                    </div>
+                    <h3>Set Learning Goals</h3>
+                    <p>Set learning goals and milestones to stay motivated and organized.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h3>Share with Others</h3>
+                    <p>Collaborate and share your learning journey with peers and mentors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+
+
+    <!-- 引入 Bootstrap 5 的 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 自定义 JavaScript -->
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+        const hideThreshold = 30;  // 定义滚动超过 100 像素后再隐藏
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // 如果向下滚动超过指定的阈值，才隐藏导航栏
+            if (scrollTop - lastScrollTop > hideThreshold) {
+                navbar.style.top = "-70px";  // 隐藏导航栏
+            } else if (lastScrollTop - scrollTop > hideThreshold) {
+                navbar.style.top = "0";  // 显示导航栏
+            }
+
+            lastScrollTop = scrollTop;
+        });
+                const text = "Track Your Learning Journey"; // 要打字显示的文本
+        let index = 0; // 初始化索引
+        const typingSpeed = 150; // 设置打字速度
+
+        function typeText() {
+            const typingElement = document.getElementById('typing-effect');
+
+            if (index < text.length) {
+                typingElement.innerHTML += text.charAt(index); // 逐字增加字符
+                index++;
+                setTimeout(typeText, typingSpeed); // 递归调用实现动态打字效果
+            }
+        }
+
+        window.onload = typeText; // 在页面加载时启动打字动画
+    </script>
+{% endblock content %}

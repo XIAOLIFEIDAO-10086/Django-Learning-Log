@@ -1,0 +1,36 @@
+{% extends 'learning_logs/base_navbar.html' %}
+{% load bootstrap5 %}  <!-- 使用 Bootstrap 5 的标签库 -->
+
+{% block content %}
+  <!-- Hero Section -->
+  <section class="hero-section" style="background: linear-gradient(to right, #007bff, #00c6ff); padding: 80px 0;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="text-center mb-4">Log in to Your Account</h2>
+          <p class="text-center text-light mb-4">Welcome back! Please enter your details to log in.</p>
+
+          <div class="feature-box p-5 rounded shadow" style="background-color: #ffffff;">
+            <form method="post" action="{% url 'users:login' %}" class="form">
+              {% csrf_token %}
+
+              <!-- 使用 Bootstrap 5 的 form 标签 -->
+              {% bootstrap_form form %}
+
+              <div class="text-center mt-4">
+                <button name="submit" class="btn btn-primary btn-lg" style="width: 100%;">Log In</button>
+              </div>
+
+              <!-- 隐藏域，用于跳转 -->
+              <input type="hidden" name="next" value="{% url 'learning_logs:topics' %}" />
+            </form>
+
+            <div class="text-center mt-4">
+              <p>Don't have an account? <a href="{% url 'users:register' %}">Sign Up</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

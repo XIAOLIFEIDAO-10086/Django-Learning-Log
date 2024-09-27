@@ -1,0 +1,41 @@
+{% extends 'learning_logs/base_navbar.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <!-- Hero Section -->
+  <section class="hero-section" style="background: linear-gradient(to right, #007bff, #00c6ff); padding: 200px 0;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h2 class="text-center mb-4">Your Topics</h2>
+          <p class="text-center text-light mb-4">Manage your learning topics or add new ones below.</p>
+
+          <div class="feature-box p-5 rounded shadow" style="background-color: #ffffff;">
+            <!-- 列表显示所有的 topics -->
+            <ul class="list-group mb-4">
+              {% for topic in topics %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <a href="{% url 'learning_logs:topic' topic.id %}" class="text-decoration-none text-primary">
+                    <strong>{{ topic }}</strong>
+                  </a>
+                  <!-- 删除按钮 -->
+                  <form action="{% url 'learning_logs:delete_topic' topic.id %}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this topic?');">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                </li>
+              {% empty %}
+                <li class="list-group-item">No topics have been added yet.</li>
+              {% endfor %}
+            </ul>
+
+            <!-- 添加新主题按钮 -->
+            <div class="text-center mt-4">
+              <a href="{% url 'learning_logs:new_topic' %}" class="btn btn-success btn-lg" style="width: 100%;">Add new topic</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

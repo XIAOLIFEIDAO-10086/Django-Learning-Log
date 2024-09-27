@@ -1,0 +1,46 @@
+{% extends 'learning_logs/base_navbar.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <!-- Hero Section -->
+  <section class="hero-section" style="background: linear-gradient(to right, #007bff, #00c6ff); padding: 80px 0;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h2 class="text-center mb-4">{{ topic }}</h2>
+          <p class="text-center text-light mb-4">Add and manage entries for this topic.</p>
+
+          <div class="feature-box p-5 rounded shadow" style="background-color: #ffffff;">
+            <!-- 添加新条目按钮 -->
+            <div class="text-center mb-4">
+              <a href="{% url 'learning_logs:new_entry' topic.id %}" class="btn btn-success btn-lg" style="width: 100%;">Add new entry</a>
+            </div>
+
+            <!-- 条目循环显示 -->
+            {% for entry in entries %}
+              <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5>{{ entry.date_added|date:'M d, Y H:i' }}</h5>
+                  <div>
+                    <!-- 编辑按钮 -->
+                    <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="btn btn-warning btn-sm me-2">Edit</a>
+                    <!-- 删除按钮 -->
+                    <form action="{% url 'learning_logs:delete_entry' entry.id %}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this entry?');">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p>{{ entry.text|linebreaks }}</p>
+                </div>
+              </div>
+            {% empty %}
+              <p class="text-center">There are no entries for this topic yet.</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

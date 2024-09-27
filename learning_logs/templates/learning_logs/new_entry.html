@@ -1,0 +1,33 @@
+{% extends 'learning_logs/base_navbar.html' %}
+
+{% block content %}
+  <!-- Hero Section -->
+  <section class="hero-section" style="background: linear-gradient(to right, #007bff, #00c6ff); padding: 80px 0;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="text-center mb-4">Add a new entry to "{{ topic }}"</h2>
+          <p class="text-center text-light mb-4">Fill in the details below to add a new entry to this topic.</p>
+
+          <div class="feature-box p-5 rounded shadow" style="background-color: #ffffff;">
+            <!-- 返回主题链接 -->
+            <p class="text-center mb-4">
+              <a href="{% url 'learning_logs:topic' topic.id %}" class="btn btn-secondary">Back to {{ topic }}</a>
+            </p>
+
+            <!-- 表单 -->
+            <form action="{% url 'learning_logs:new_entry' topic.id %}" method="post" class="form">
+              {% csrf_token %}
+              {{ form.as_p }}
+
+              <!-- 提交按钮 -->
+              <div class="text-center mt-4">
+                <button name="submit" class="btn btn-primary btn-lg" style="width: 100%;">Add Entry</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
