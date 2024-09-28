@@ -136,20 +136,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
-
-# Hreoku 设置
-if os.getcwd() == '/app':    #get current working directory 获取当前的工作目录（也叫当前路径）
-    import dj_database_url   #用于在Heroku上配置服务器
-    DATABASES = {
-        'default':dj_database_url.config(default='postgres://localhost')        #heroku使用postgreSQL
-    }
-    # 让request.is_secure()承认X-Forwarded-Proto头，也就是支持https请求
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    # 支持所有的主机头（host header），让django项目能使用heroku的url来提供项目服务
-    ALLOWED_HOSTS = ['*']
-    # 静态资产配置，是项目能在heroku上正确的提供静态文件
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR,'static')
-    )
+#
+# # Hreoku 设置
+# if os.getcwd() == '/app':    #get current working directory 获取当前的工作目录（也叫当前路径）
+#     import dj_database_url   #用于在Heroku上配置服务器
+#     DATABASES = {
+#         'default':dj_database_url.config(default='postgres://localhost')        #heroku使用postgreSQL
+#     }
+#     # 让request.is_secure()承认X-Forwarded-Proto头，也就是支持https请求
+#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#     # 支持所有的主机头（host header），让django项目能使用heroku的url来提供项目服务
+#     ALLOWED_HOSTS = ['*']
+#     # 静态资产配置，是项目能在heroku上正确的提供静态文件
+#     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+#     STATIC_ROOT = 'staticfiles'
+#     STATICFILES_DIRS = (
+#         os.path.join(BASE_DIR,'static')
+#     )
