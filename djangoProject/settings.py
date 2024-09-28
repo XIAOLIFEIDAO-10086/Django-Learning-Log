@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     #我的应用程序(可通过注释对应用程序编组)
     'learning_logs',
     'users',
-    'django_bootstrap5',
 ]           #一个告诉Django项目由哪些应用程序组成的列表
 
 MIDDLEWARE = [
