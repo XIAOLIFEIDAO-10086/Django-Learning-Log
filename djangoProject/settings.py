@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o=6__fb-lo6yg!+(%xrf#l@c$g)@w0(egndc1ufjr!++*j%$3)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8.140.53.219','localhost','0.0.0.0:8000']
 # 我的设置
 LOGIN_URL = '/users/login/'   #这写的是login_required装饰器中所需的路径
 
