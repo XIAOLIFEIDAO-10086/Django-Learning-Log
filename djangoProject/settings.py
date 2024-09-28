@@ -153,3 +153,5 @@ BOOTSTRAP3 = {
 #     STATICFILES_DIRS = (
 #         os.path.join(BASE_DIR,'static')
 #     )
+STATIC_URL = '/static/'  # 这是静态文件的URL路径
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # 将静态文件收集到staticfiles文件夹
