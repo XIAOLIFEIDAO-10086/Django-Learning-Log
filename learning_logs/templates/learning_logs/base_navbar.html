@@ -226,6 +226,26 @@
       a, button {
         transition: all 0.3s ease;
       }
+  .custom-btn {
+      display: inline-block;
+      padding: 10px 20px; /* 按钮的内边距 */
+      font-size: 16px;
+      color: #fff; /* 白色文字 */
+      background-color: #007bff; /* 按钮的蓝色背景 */
+      border-radius: 50px; /* 圆角 */
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 过渡效果 */
+  }
+
+  .custom-btn:hover {
+      background-color: #0056b3; /* 悬停时的颜色变化 */
+      box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.7); /* 悬停时的阴影发光效果 */
+  }
+
+  .container.position-relative {
+      position: relative; /* 确保返回按钮定位在容器内的左上角 */
+  }
     </style>
 </head>
 <body>

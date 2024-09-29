@@ -11,6 +11,8 @@
           <p class="text-center text-light mb-4">Please fill out the form below to add a new topic.</p>
 
           <div class="feature-box p-5 rounded shadow" style="background-color: #ffffff;">
+
+
             <form action="{% url 'learning_logs:new_topic' %}" method="post" class="form">
               {% csrf_token %}
 
@@ -19,7 +21,8 @@
 
               <!-- 提交按钮 -->
               <div class="text-center mt-4">
-                <button name="submit" class="btn btn-primary btn-lg" style="width: 100%;">Add Topic</button>
+              <button name="submit" class="btn btn-primary btn-lg" style="width: 100%;">Add Topic</button>
+
               </div>
             </form>
           </div>

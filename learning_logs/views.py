@@ -1,8 +1,10 @@
 from lib2to3.fixes.fix_input import context
+
+from django.contrib.auth import login
 from django.http import HttpRequest, HttpResponse,HttpResponseRedirect,Http404    #最后这个是重定向的类，用户提交主题后，我们返回显示全部主题的页面
 from django.urls import reverse
 from django.shortcuts import render     #django.shortcuts是快捷函数的意思，其中render是用于渲染模版，并将其呈现给用户
-from .forms import TopicForm,EntryForm
+from .forms import TopicForm, EntryForm, UserRegisterForm
 from learning_logs.models import Topic,Entry     #.models和learning_logs.models的区别，一个是相对导入，在同一app下即可，一个是绝对导入，在任何条件下均可，这个就相当于把Topic和Entry模型中的数据都用上了
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
@@ -157,3 +159,5 @@ class CustomUserCreationForm(UserCreationForm):
         self.fields['username'].label = 'Username'
         self.fields['password1'].label = 'Password'
         self.fields['password2'].label = 'Password confirmation'
+
+

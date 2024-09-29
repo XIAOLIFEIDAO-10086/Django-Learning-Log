@@ -21,7 +21,7 @@
                   <!-- 删除按钮 -->
                   <form action="{% url 'learning_logs:delete_topic' topic.id %}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this topic?');">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Delete</button>
                   </form>
                 </li>
               {% empty %}
@@ -31,7 +31,7 @@
 
             <!-- 添加新主题按钮 -->
             <div class="text-center mt-4">
-              <a href="{% url 'learning_logs:new_topic' %}" class="btn btn-success btn-lg" style="width: 100%;">Add new topic</a>
+              <a href="{% url 'learning_logs:new_topic' %}" class="btn btn-primary btn-lg" style="width: 100%;">Add New Topic</a>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 from django import forms
 from .models import Topic,Entry
+from django.contrib.auth.models import User
 class TopicForm(forms.ModelForm):   #定义一个名为 TopicForm 的类，继承自 forms.ModelForm。ModelForm 是 Django 提供的一个方便类，它可以基于数据库模型自动生成表单，处理表单字段验证和数据保存等功能。
     class Meta:     #这是 ModelForm 的内部类，用来指定表单与哪个模型关联，以及要使用哪些字段。
         model = Topic     #这里指定了该表单基于 Topic 模型。它会根据 Topic 模型的定义来创建表单的字段。
@@ -17,3 +18,14 @@ class EntryForm(forms.ModelForm):    #这里的表单文件是决定表单具有
 # forms.Textarea 将 text 字段渲染为一个多行文本区域 (<textarea>)，并通过 attrs 设置了 cols 属性，将其宽度设置为 80 个字符。
 # 通过使用 widgets，你可以灵活地控制表单在前端页面中的展示形式，改善用户的输入体验。
 # attrs 是一个 字典，全称为attributes（属性）
+
+class UserRegisterForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError('该用户名已存在，请选择其他用户名')
+        return username

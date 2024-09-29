@@ -7,13 +7,19 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8">
+                  <!-- 返回上一级按钮 -->
+          <div class="text-center mb-4">
+
+          </div>
           <h2 class="text-center mb-4">{{ topic }}</h2>
           <p class="text-center text-light mb-4">Add and manage entries for this topic.</p>
 
           <div class="feature-box p-5 rounded shadow" style="background-color: #ffffff;">
             <!-- 添加新条目按钮 -->
+
+
             <div class="text-center mb-4">
-              <a href="{% url 'learning_logs:new_entry' topic.id %}" class="btn btn-success btn-lg" style="width: 100%;">Add new entry</a>
+              <a href="{% url 'learning_logs:new_entry' topic.id %}" class="btn btn-primary btn-lg" style="width: 100%;">Add New Entry</a>
             </div>
 
             <!-- 条目循环显示 -->
